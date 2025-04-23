@@ -76,7 +76,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
+
+      # Optional: Run startup script if required during deployment phase
+      - name: Run startup script
+        run: |
+          chmod +x startup.sh
+          ./startup.sh
+          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
