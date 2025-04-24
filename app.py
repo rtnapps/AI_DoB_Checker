@@ -55,7 +55,8 @@ def extract_dob_text(image_np):
     url = f"https://detect.roboflow.com/{MODEL_ID}/{MODEL_VERSION}?api_key={API_KEY}"
     response = requests.post(url, files={"file": image_bytes})
     if response.status_code != 200:
-        return "Error: Roboflow API request failed"
+        return response.status_code
+        # return "Error: Roboflow API request failed"
     
     predictions = response.json()
     for pred in predictions.get("predictions", []):
