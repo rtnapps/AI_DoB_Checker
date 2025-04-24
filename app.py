@@ -8,10 +8,10 @@ import os
 
 # Set up persistent storage path for Azure Web App
 # /home is persistent in Azure App Service
-STORAGE_PATH = "/home/EasyOCR"
-os.makedirs(STORAGE_PATH, exist_ok=True)
-os.environ["EASYOCR_CACHE_DIR"] = STORAGE_PATH
-os.environ["EASYOCR_DOWNLOAD_DIR"] = STORAGE_PATH
+# STORAGE_PATH = "/home/EasyOCR"
+# os.makedirs(STORAGE_PATH, exist_ok=True)
+# os.environ["EASYOCR_CACHE_DIR"] = STORAGE_PATH
+# os.environ["EASYOCR_DOWNLOAD_DIR"] = STORAGE_PATH
 
 # Flask app
 app = Flask(__name__)
@@ -22,14 +22,25 @@ MODEL_ID = "driving_license-08fcm"
 MODEL_VERSION = "4"
 
 # Initialize EasyOCR reader
-reader = None
 
-def get_reader():
-    global reader
-    if reader is None:
-        print(f"Initializing EasyOCR with cache dir: {STORAGE_PATH}")
-        reader = easyocr.Reader(["en"], model_storage_directory=STORAGE_PATH)
-    return reader
+# Path to your downloaded model file
+MODEL_PATH = "model"  # Update this path to where you downloaded the model
+
+# Initialize EasyOCR reader with custom model storage directory
+reader = easyocr.Reader(
+    ["en"],
+    model_storage_directory=MODEL_PATH,
+    download_enabled=False  # Prevent automatic downloading
+)
+
+# reader = None
+
+# def get_reader():
+#     global reader
+#     if reader is None:
+#         print(f"Initializing EasyOCR with cache dir: {STORAGE_PATH}")
+#         reader = easyocr.Reader(["en"], model_storage_directory=STORAGE_PATH)
+#     return reader
 
 def extract_dob_text(image_np):
     # Encode image
