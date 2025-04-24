@@ -12,6 +12,10 @@ import os
 # os.makedirs(STORAGE_PATH, exist_ok=True)
 # os.environ["EASYOCR_CACHE_DIR"] = STORAGE_PATH
 # os.environ["EASYOCR_DOWNLOAD_DIR"] = STORAGE_PATH
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Flask app
 app = Flask(__name__)
