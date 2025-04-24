@@ -1,6 +1,7 @@
-flask 
-easyocr 
+Flask
+easyocr
 opencv-python-headless
-pillow 
+Pillow
+numpy
 requests
 gunicorn
