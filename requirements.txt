@@ -1,7 +1,8 @@
-Flask
+flask
 easyocr
 opencv-python-headless
 Pillow
 numpy
 requests
 gunicorn
+python-dotenv
