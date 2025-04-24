@@ -32,17 +32,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Pre-download EasyOCR models
-        run: |
-          mkdir -p .EasyOCR
-          python -c "import easyocr; easyocr.Reader(['en'], download_enabled=True)"
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      # - name: Zip artifact for deployment
-      #   run: zip release.zip ./* -r
-
       - name: Zip artifact for deployment
-        run: zip -r release.zip . -x "venv/*"
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
