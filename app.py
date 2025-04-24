@@ -7,8 +7,10 @@ from PIL import Image
 import os
 
 # ✅ Set persistent cache directory for EasyOCR (Azure App Service safe)
-os.environ["EASYOCR_CACHE_DIR"] = "/home/site/wwwroot/.EasyOCR"
-os.makedirs("/home/site/wwwroot/.EasyOCR", exist_ok=True)
+# os.environ["EASYOCR_CACHE_DIR"] = "/home/site/wwwroot/.EasyOCR"
+# os.makedirs("/home/site/wwwroot/.EasyOCR", exist_ok=True)
+os.environ["EASYOCR_CACHE_DIR"] = "/home/.EasyOCR"
+os.makedirs("/home/.EasyOCR", exist_ok=True)
 
 # Flask app
 app = Flask(__name__)
