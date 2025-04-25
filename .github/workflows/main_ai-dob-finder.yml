@@ -68,24 +68,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_271B64A905504693A6BD58EEECB2AC9B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_548A79EA24444CD6B3B5E35C6DA05B42 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B5E7DA6FD3A04E4B950B84B7DBEFD6C2 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_12E7576533C441BF94537CAB20A0D685 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_27A7F89BCBCE4449AB33AB6C8CA2DB62 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9E01BE61571A4609B9A955411A7CD48A }}
 
-      - name: Log in to Azure CLI using service principal
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      # # Optional: Run startup script if required during deployment phase
-      # - name: Run startup script
-      #   run: |
-      #     chmod +x startup.sh
-      #     ./startup.sh
-          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'AI-DoB-Finder'
           slot-name: 'Production'
+          
